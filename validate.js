@@ -1,19 +1,33 @@
 function validateForm()
     {
-    	// Validate Address
-    	var address = $("#fraddress").val();
-    	if (address=="") {alert("Please enter a valid address");
-    	    } else {
-    		alert("Please enter a valid address");
-    	}
-
     	// Validate Email
     	var email = $("#fremail").val();
     	if ((/(.+)@(.+){2,}\.(.+){2,}/.test(email)) || email!="" || email!=null) {
-            alert(email);
         } else {
     		alert("Please enter a valid email");
     	}
 
+    	// Validate Address
+    	var address = $("#fraddress").val();
+    	if (address=="") {
+    	    alert("Please enter a valid address");
+    	} else {
+    		alert(address);
+    		$.ajax({
+                type: "GET",
+                url: "http://nominatim.openstreetmap.org/search?q=1+exchange+plaza+raleigh&format=json",
+                dataType: "json",
+                success: function (response) {
+
+                 for(i in response) {
+                    lat = response[i].lat;
+                    lon = response[i].lon;
+                    alert(lat + ", " + lon);
+
+                 }
+                }
+
+            });
+        }
       return false;
     }
