@@ -15,7 +15,7 @@ function validateForm()
     		alert(address);
     		$.ajax({
                 type: "GET",
-                url: "http://nominatim.openstreetmap.org/search?q=1+exchange+plaza+raleigh&format=json",
+                url: "http://nominatim.openstreetmap.org/search?q="+address+"&format=json",
                 dataType: "json",
                 success: function (response) {
 
