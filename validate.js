@@ -1,8 +1,9 @@
 function validateForm()
     {
-    	// Validate Title
+    	// Validate Address
     	var address = $("#fraddress").val();
-    	if (address!="") { } else {
+    	if (address=="") {alert("Please enter a valid address");
+    	    } else {
     		alert("Please enter a valid address");
     	}
 
